@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Encontrar Alegria em Cristo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fefefe;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: #444;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 24px;
+      color: #b15c9e;
+    }
+
+    .carousel {
+      position: relative;
+      max-width: 90%;
+      margin: 30px auto;
+    }
+
+    .carousel img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+    }
+
+    .arrow.left { left: -50px; }
+    .arrow.right { right: -50px; }
+
+    .buttons {
+      margin: 20px auto;
+    }
+
+    .buttons button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #d892c1;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .buttons button:hover {
+      background-color: #bd76ad;
+    }
+
+    .text {
+      margin: 40px auto;
+      max-width: 600px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      .arrow.left { left: 0; }
+      .arrow.right { right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Encontrar Alegria em Cristo</h1>
+
+  <div class="carousel">
+    <button class="arrow left" onclick="previousImage()">&#8592;</button>
+    <img id="carouselImage" src="Imagem01.jpg" alt="Imagem espiritual">
+    <button class="arrow right" onclick="nextImage()">&#8594;</button>
+  </div>
+
+  <div class="buttons">
+    <button onclick="compartilharWhatsApp()">Compartilhar no WhatsApp</button>
+    <button onclick="compartilharInstagram()">Abrir Instagram</button>
+    <button onclick="salvarImagem()">Salvar Imagem</button>
+  </div>
+
+  <div class="text">
+    <p>
+      "Se buscarmos motivos para sentir raiva, para duvidar, para ficarmos rancorosos ou sozinhos, vamos encontrá-los também. <br><br>
+      No entanto, se buscarmos alegria — se procurarmos motivos para nos regozijarmos e para felizes seguirmos o Salvador, vamos encontrá-los. <br><br>
+      Raramente encontramos algo que não estamos procurando. <br><br>
+      Vocês estão procurando alegria? <br><br>
+      Buscai, e encontrareis."
+    </p>
+  </div>
+
+  <script>
+    const images = [
+      'Imagem01.jpg',
+      'Imagem02.jpg',
+      'Imagem03.jpg',
+      'Imagem04.jpg',
+      'Imagem05.jpg',
+      'Imagem06.jpg'
+    ];
+    let currentIndex = 0;
+
+    function showImage(index) {
+      document.getElementById('carouselImage').src = images[index];
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+
+    function previousImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+
+    function compartilharWhatsApp() {
+      const url = encodeURIComponent(window.location.href);
+      const msg = encodeURIComponent("Olha essa imagem inspiradora que encontrei! 💗 " + url);
+      window.open(`https://wa.me/?text=${msg}`, '_blank');
+    }
+
+    function compartilharInstagram() {
+      window.open("https://www.instagram.com/", '_blank');
+    }
+
+    function salvarImagem() {
+      const img = images[currentIndex];
+      const link = document.createElement('a');
+      link.href = img;
+      link.download = img;
+      link.click();
+    }
+  </script>
+
+</body>
+</html>
